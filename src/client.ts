@@ -2675,7 +2675,7 @@ export class MatrixClient extends TypedEventEmitter<EmittedEvents, ClientEventHa
         try {
             res = await this.http.authedRequest<IKeyBackupInfo>(
                 undefined, Method.Get, "/room_keys/version", undefined, undefined,
-                // { prefix: PREFIX_UNSTABLE },
+                { prefix: PREFIX_UNSTABLE },
             );
         } catch (e) {
             if (e.errcode === 'M_NOT_FOUND') {
@@ -7512,7 +7512,6 @@ export class MatrixClient extends TypedEventEmitter<EmittedEvents, ClientEventHa
         );
 
         return this.http.authedRequest(callback, Method.Get, path, { limit: limit?.toString() ?? "30" });
-        //return this.http.authedRequest(callback, Method.Get, path, { limit: limit?.toString() ?? "30" },null,{header:"BAMZ req HEADER"});
     }
 
     /**
